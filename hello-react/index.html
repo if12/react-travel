@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello React</title>
+</head>
+<body>
+	<div id="app">
+		<div id="react1"></div>
+		<div id="react2"></div>
+	</div>
+</body>
+<script src="../vendor/react.15.4.0.js"></script>
+<script src="../vendor/react-dom.js"></script>
+<script>
+	// class component
+	var HelloReact = React.createClass({
+		render: function() {
+			return React.createElement('h4', null, 'Hello React');
+		}
+	});
+
+	// function component
+	var HelloReactWithFn = function() {
+		return React.createElement('h5', null, 'Hello React by function');
+	}
+
+	ReactDOM.render(
+		React.createElement(HelloReact),
+		document.getElementById('react1')
+	)
+
+	ReactDOM.render(
+		React.createElement(HelloReactWithFn),
+		document.getElementById('react2')
+	)
+</script>
+</html>
