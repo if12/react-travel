@@ -1,7 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 
-var exclude = ['hello-react', 'vendor'];
+var exclude = ['hello-react', 'vendor', '.git'];
 var entries = fs.readdirSync('.')
 	.filter(function(f) {
 		return fs.statSync(f).isDirectory() && exclude.indexOf(f) < 0;
@@ -10,8 +10,6 @@ var entries = fs.readdirSync('.')
 		assigned[c] = path.resolve(__dirname, c, './src/index.js');
 		return Object.assign(p, assigned);
 	}, {})
-
-console.log(entries);
 
 module.exports = {
 	entry: entries,
