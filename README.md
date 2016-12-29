@@ -1,26 +1,28 @@
-### React旅程
+### React Travel
 
-基于React 1.5.4版本
+Based on React 1.5.4
 
-* hello-react 简单的hello world demo
-* hello-react-jsx 需要JSX语法的hello world demo
-* rerender 重新渲染
-* props-deliver Props使用
-* state-render 状态机
-* life 生命周期
-* 未完待续
+* **hello-react**:  Simple hello world demo without JSX and Babel
+* **hello-react-jsx**: Hello world demo with JSX and Babel
+* **rerender**: How to make React Component Re-render
+* **props-deliver**: How to use Props to deliver to children
+* **state-render**: State machine make the Component Re-render easily
+* **life**: React Component Lifecycle
+* **ref**: Get the some children instance from the render function
+* **form**: Difference between Uncontrolled Form with Controlled Form 
+* To Be Continued
 
-### 效果
-打开根目录的`index.html`
+### Show
+Open the root `index.html` file
 
-### 开发
+### Develop
 
 ```shell
 yarn
 webpack -w
 ```
 
-### 相关资料
+### Reference
 
 * [react-demos](https://github.com/ruanyf/react-demos)
-* [官方React文档](https://facebook.github.io/react/)
+* [React Document](https://facebook.github.io/react/)
