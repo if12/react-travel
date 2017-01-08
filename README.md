@@ -25,6 +25,8 @@ yarn
 webpack -w
 ```
 
+and have fun with __React__
+
 If you want to new a example
 
 ```shell
@@ -35,3 +37,4 @@ yarn demo <name> // example name
 
 * [react-demos](https://github.com/ruanyf/react-demos)
 * [React Document](https://facebook.github.io/react/)
+* [极客学院React教学(注：可能React版本太旧)](http://wiki.jikexueyuan.com/project/react/)

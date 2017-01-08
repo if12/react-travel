@@ -1,7 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 
-var exclude = ['hello-react'];
+var exclude = ['hello-react', 'mixin'];
 var SRC_DIR = path.resolve(__dirname, 'src');
 var entries = fs.readdirSync('./src/')
 	.filter(function(f) {

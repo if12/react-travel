@@ -56,152 +56,60 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * React uncontrolled & controlled Component
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 参考 React Example
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-	var UncontrolledLogin = function (_Component) {
-		_inherits(UncontrolledLogin, _Component);
 
-		function UncontrolledLogin() {
-			var _ref;
+	var proto = Object.create(HTMLElement.prototype, {
+		attachedCallback: {
+			value: function value() {
+				var mountPoint = document.createElement('span');
+				this.createShadowRoot().appendChild(mountPoint);
 
-			var _temp, _this, _ret;
-
-			_classCallCheck(this, UncontrolledLogin);
-
-			for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-				args[_key] = arguments[_key];
+				var name = this.getAttribute('name');
+				var url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+				(0, _reactDom.render)(_react2.default.createElement(
+					'a',
+					{ href: url },
+					name
+				), mountPoint);
 			}
+		}
+	});
 
-			return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = UncontrolledLogin.__proto__ || Object.getPrototypeOf(UncontrolledLogin)).call.apply(_ref, [this].concat(args))), _this), _this.handleSubmitClick = function () {
-				var user = _this.userInput.value;
-				var pwd = _this.pwdInput.value;
-				console.log(user, pwd);
-			}, _temp), _possibleConstructorReturn(_this, _ret);
+	document.registerElement('x-search', { prototype: proto });
+
+	var HelloWebComponent = function (_Component) {
+		_inherits(HelloWebComponent, _Component);
+
+		function HelloWebComponent() {
+			_classCallCheck(this, HelloWebComponent);
+
+			return _possibleConstructorReturn(this, (HelloWebComponent.__proto__ || Object.getPrototypeOf(HelloWebComponent)).apply(this, arguments));
 		}
 
-		_createClass(UncontrolledLogin, [{
-			key: 'render',
-			value: function render() {
-				var _this2 = this;
-
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'p',
-						null,
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: '' },
-							'\u8D26\u53F7: '
-						),
-						_react2.default.createElement('input', { type: 'text', defaultValue: 'zhangkaihao', ref: function ref(input) {
-								return _this2.userInput = input;
-							} })
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: '' },
-							'\u5BC6\u7801: '
-						),
-						_react2.default.createElement('input', { type: 'text', ref: function ref(input) {
-								return _this2.pwdInput = input;
-							} })
-					),
-					_react2.default.createElement(
-						'button',
-						{ onClick: this.handleSubmitClick },
-						'Sign up'
-					)
-				);
-			}
-		}]);
-
-		return UncontrolledLogin;
-	}(_react.Component);
-
-	var ControlledLogin = function (_Component2) {
-		_inherits(ControlledLogin, _Component2);
-
-		function ControlledLogin() {
-			_classCallCheck(this, ControlledLogin);
-
-			var _this3 = _possibleConstructorReturn(this, (ControlledLogin.__proto__ || Object.getPrototypeOf(ControlledLogin)).call(this));
-
-			_this3.handleInputChange = function (which) {
-				return function (e) {
-					_this3.setState(_defineProperty({}, which, e.target.value));
-				};
-			};
-
-			_this3.handleSubmitClick = function () {
-				console.log(_this3.state);
-			};
-
-			_this3.state = {
-				user: '12312',
-				pwd: ''
-			};
-			return _this3;
-		}
-
-		_createClass(ControlledLogin, [{
+		_createClass(HelloWebComponent, [{
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
 					null,
-					_react2.default.createElement(
-						'p',
-						null,
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: '', value: this.state.user },
-							'\u8D26\u53F7: '
-						),
-						_react2.default.createElement('input', { type: 'text',
-							onChange: this.handleInputChange('user'),
-							value: this.state.user })
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						_react2.default.createElement(
-							'label',
-							{ htmlFor: '' },
-							'\u5BC6\u7801: '
-						),
-						_react2.default.createElement('input', { type: 'text',
-							onChange: this.handleInputChange('pwd'),
-							value: this.state.pwd })
-					),
-					_react2.default.createElement(
-						'button',
-						{ onClick: this.handleSubmitClick },
-						'Sign up'
-					)
+					'Hello ',
+					_react2.default.createElement('x-search', { name: this.props.name }),
+					'!'
 				);
 			}
 		}]);
 
-		return ControlledLogin;
+		return HelloWebComponent;
 	}(_react.Component);
 
-	(0, _reactDom.render)(_react2.default.createElement(UncontrolledLogin, null), document.getElementById('uncontrolled'));
-
-	(0, _reactDom.render)(_react2.default.createElement(ControlledLogin, null), document.getElementById('controlled'));
+	(0, _reactDom.render)(_react2.default.createElement(HelloWebComponent, { name: 'React' }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
