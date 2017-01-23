@@ -11,6 +11,7 @@ Based on React __1.5.4__
 * **ref**: Get the some children instance from the render function
 * **form**: Difference between Uncontrolled Form with Controlled Form 
 * **pure**: Not need shouldComponentUpdate and Optimize performance
+* **anim**: how to use anim in React
 * To Be Continued
 
 ### Show

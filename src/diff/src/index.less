@@ -1,0 +1,57 @@
+@size: 40px;
+@top: 70px;
+@left: 40px;
+@l: sqrt(pow(@top, 2) + pow(@left, 2)) - @size;
+@ty: (@l - @size)/2 + @top/2;
+
+.diff-view {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.node {
+	height: @size;
+	width: @size;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	position: absolute;
+	top: @top;
+
+	&:after {
+		content: attr(data-name);
+		color: #555;
+		line-height: @size;
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+	}
+
+	.node:before {
+		content: '';
+		display: inline-block;
+		width: 1px;
+		position: absolute;
+		height: @l;
+		background-color: #999;
+
+		top: 0;
+		left: 0;
+	}
+	
+	/*last-child要放在 first-child前面，应该如果子元素只有一个的话，last-child和first-child都会
+	生效，这个时候last-child会覆盖first-child*/
+	.node:last-child {
+		left: @left;
+		&:before {
+			transform: translate(@size/2 - @left/2 - 2px, -@ty) rotate(atan(@top/@left) - pi()/2);
+		}
+	}
+
+	.node:first-child {
+		left: -@left;
+		&:before {
+			transform: translate(@size/2 + @left/2, -@ty) rotate(pi()/2 - atan(@top/@left));
+		}
+	}
+
+}
