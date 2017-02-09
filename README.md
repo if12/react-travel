@@ -12,6 +12,8 @@ Based on React __1.5.4__
 * **form**: Difference between Uncontrolled Form with Controlled Form 
 * **pure**: Not need shouldComponentUpdate and Optimize performance
 * **anim**: how to use anim in React
+* **diff**: React Diff algorithm
+* **ssr**: React Sever Side Render
 * To Be Continued
 
 ### Show
