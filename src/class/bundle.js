@@ -46,19 +46,109 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
 	var _reactDom = __webpack_require__(32);
 
-	var _HelloReactSSR = __webpack_require__(197);
-
-	var _HelloReactSSR2 = _interopRequireDefault(_HelloReactSSR);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	(0, _reactDom.render)(_react2.default.createElement(_HelloReactSSR2.default, null), document.getElementById('app'));
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 两者的不同
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * by https://toddmotto.com/react-create-class-versus-component/#syntax-differences
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                *
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 1. 语法
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 2. propTypes
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 3. getDefaultProps
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 4. State
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 5. this
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * 6. Mixins
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+	var HelloReactByComponent = function (_Component) {
+		_inherits(HelloReactByComponent, _Component);
+
+		function HelloReactByComponent() {
+			_classCallCheck(this, HelloReactByComponent);
+
+			return _possibleConstructorReturn(this, (HelloReactByComponent.__proto__ || Object.getPrototypeOf(HelloReactByComponent)).apply(this, arguments));
+		}
+
+		_createClass(HelloReactByComponent, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					'Hello React Class By extends Component'
+				);
+			}
+		}]);
+
+		return HelloReactByComponent;
+	}(_react.Component);
+
+	var HelloReactByCreateClass = _react2.default.createClass({
+		displayName: 'HelloReactByCreateClass',
+
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				'Hello React Class By React.createClass'
+			);
+		}
+	});
+
+	var HelloReact = function (_Component2) {
+		_inherits(HelloReact, _Component2);
+
+		function HelloReact(props) {
+			_classCallCheck(this, HelloReact);
+
+			var _this2 = _possibleConstructorReturn(this, (HelloReact.__proto__ || Object.getPrototypeOf(HelloReact)).call(this, props));
+
+			_this2.state = {
+				component: true
+			};
+			return _this2;
+		}
+
+		_createClass(HelloReact, [{
+			key: 'toggle',
+			value: function toggle() {
+				var component = this.state.component;
+				this.setState({
+					component: !component
+				});
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'button',
+						{ onClick: this.toggle.bind(this) },
+						'\u5207\u6362'
+					),
+					this.state.component ? _react2.default.createElement(HelloReactByComponent, null) : _react2.default.createElement(HelloReactByCreateClass, null)
+				);
+			}
+		}]);
+
+		return HelloReact;
+	}(_react.Component);
+
+	(0, _reactDom.render)(_react2.default.createElement(HelloReact, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21472,83 +21562,6 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 178 */,
-/* 179 */,
-/* 180 */,
-/* 181 */,
-/* 182 */,
-/* 183 */,
-/* 184 */,
-/* 185 */,
-/* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */,
-/* 194 */,
-/* 195 */,
-/* 196 */,
-/* 197 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var HelloReactSSR = function (_Component) {
-		_inherits(HelloReactSSR, _Component);
-
-		function HelloReactSSR() {
-			_classCallCheck(this, HelloReactSSR);
-
-			return _possibleConstructorReturn(this, (HelloReactSSR.__proto__ || Object.getPrototypeOf(HelloReactSSR)).apply(this, arguments));
-		}
-
-		_createClass(HelloReactSSR, [{
-			key: 'handleClick',
-			value: function handleClick() {
-				console.log('handleClick');
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'h4',
-						{ onClick: this.handleClick },
-						'Hello React SSR'
-					)
-				);
-			}
-		}]);
-
-		return HelloReactSSR;
-	}(_react.Component);
-
-	exports.default = HelloReactSSR;
 
 /***/ }
 /******/ ]);
