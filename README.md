@@ -7,6 +7,7 @@ Based on React __1.5.4__
 * **rerender**: How to make React Component Re-render
 * **props-deliver**: How to use Props to deliver to children
 * **state-render**: State machine make the Component Re-render easily
+* **class**: React.createClass && extends React.Component
 * **life**: React Component Lifecycle
 * **ref**: Get the some children instance from the render function
 * **form**: Difference between Uncontrolled Form with Controlled Form 
