@@ -48,7 +48,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(195);
+	__webpack_require__(198);
 
 	var _react = __webpack_require__(1);
 
@@ -21899,13 +21899,16 @@
 
 
 /***/ },
-/* 195 */
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(196);
+	var content = __webpack_require__(199);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(194)(content, {});
@@ -21925,7 +21928,7 @@
 	}
 
 /***/ },
-/* 196 */
+/* 199 */
 /***/ function(module, exports) {
 
 	module.exports = ".diff-view {\n  width: 50%;\n  margin: 0 auto;\n}\n.node {\n  height: 40px;\n  width: 40px;\n  border: 1px solid #ccc;\n  border-radius: 50%;\n  position: absolute;\n  top: 70px;\n  /*last-child要放在 first-child前面，应该如果子元素只有一个的话，last-child和first-child都会\n\t生效，这个时候last-child会覆盖first-child*/\n}\n.node:after {\n  content: attr(data-name);\n  color: #555;\n  line-height: 40px;\n  display: inline-block;\n  text-align: center;\n  width: 100%;\n}\n.node .node:before {\n  content: '';\n  display: inline-block;\n  width: 1px;\n  position: absolute;\n  height: 40.62257748px;\n  background-color: #999;\n  top: 0;\n  left: 0;\n}\n.node .node:last-child {\n  left: 40px;\n}\n.node .node:last-child:before {\n  transform: translate(-2px, -35.31128874px) rotate(-0.51914611rad);\n}\n.node .node:first-child {\n  left: -40px;\n}\n.node .node:first-child:before {\n  transform: translate(40px, -35.31128874px) rotate(0.51914611rad);\n}\n"

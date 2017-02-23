@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+var webpack = require('webpack');
 
 var exclude = ['hello-react', 'mixin'];
 var SRC_DIR = path.resolve(__dirname, 'src');

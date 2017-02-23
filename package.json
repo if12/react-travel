@@ -1,7 +1,12 @@
 {
   "name": "react-travel",
   "scripts": {
-    "demo": "node ./cli.js"
+    "demo": "node ./cli.js",
+    "dev": "NODE_ENV=development webpack -w --progress",
+    "prod": "NODE_ENV=production webpack --progress",
+    "se": "cd src/bench/src && node bench.js",
+    "so": "cd src/bench/src && node show.js && node ../open-cli/cli.js http://localhost:8888/github.repo/react-travel/src/bench/table.html",
+    "bench": "yarn se && yarn so"
   },
   "dependencies": {
     "babel-register": "^6.22.0",
@@ -18,11 +23,15 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-preset-stage-2": "^6.3.13",
+    "chromedriver": "^2.27.3",
     "ejs": "^2.5.5",
     "fs-extra": "^1.0.0",
+    "jStat": "^1.5.3",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
     "raw-loader": "^0.5.1",
+    "react-addons-perf": "^15.4.2",
+    "selenium-webdriver": "2.53.3",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0"
   }
