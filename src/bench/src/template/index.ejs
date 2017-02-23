@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+	<style>
+		table {
+			border: 1px solid;
+			border-collapse: collapse;
+		}
+
+		th {
+			padding: 10px;
+		}
+
+		th, td {
+			border: 1px solid
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<th>React-15.4.2</th>
+			<% titles.forEach(function(title) { %>
+				<th><%= title %></th>
+			<% }) %>
+		</thead>
+		<!-- tr > td -->
+		<tbody>
+			<% bms.forEach(function(bm) { %>
+				<tr>
+					<td><%= bm.label %><br><%= bm.description %></td>
+					<% titles.forEach(function(th) { %>
+						<td><%= stats[th][bm.id].mean %></td>
+					<% }) %>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+</body>
+</html>
