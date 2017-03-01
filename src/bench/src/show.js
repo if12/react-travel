@@ -1,8 +1,6 @@
 /**
  * @author monkindey
  * @description 参考 js-framework-benchmark 项目
- *
- * 数据双维之后感觉整个人都不好了,table如何生成
  */
 var fs = require('fs');
 var path = require('path');

@@ -1,6 +1,6 @@
 ### React Travel
 
-Based on React __1.5.4__
+Based on React __15.4.2__
 
 * **hello-react**:  Simple hello world demo without JSX and Babel
 * **hello-react-jsx**: Hello world demo with JSX and Babel
@@ -15,6 +15,8 @@ Based on React __1.5.4__
 * **anim**: how to use anim in React
 * **diff**: React Diff algorithm
 * **ssr**: React Sever Side Render
+* **perf**: Use the React Perf Addon to test the React Perf
+* **bench**: Use the Selenium to test React Perf
 * To Be Continued
 
 ### Show

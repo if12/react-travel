@@ -1,1 +1,3 @@
 node_modules
+src/bench/src/stats
+src/bench/fetch-commits.js

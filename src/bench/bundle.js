@@ -183,6 +183,7 @@
 			_this3.makeOp.bind(_this3)();
 
 			_this3.printDuration = _this3.printDuration.bind(_this3);
+			_this3.handleChange = _this3.handleChange.bind(_this3);
 			return _this3;
 		}
 
@@ -229,6 +230,15 @@
 				}
 			}
 		}, {
+			key: 'handleChange',
+			value: function handleChange(e) {
+				if (e.target.checked) {
+					(0, _store.setEnv)('github');
+				} else {
+					(0, _store.setEnv)('local');
+				}
+			}
+		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
 				this.printDuration();
@@ -253,7 +263,17 @@
 									op
 								);
 							}
-						})
+						}),
+						_react2.default.createElement(
+							'span',
+							null,
+							_react2.default.createElement('input', { type: 'checkbox', id: 'use-github', onChange: this.handleChange }),
+							_react2.default.createElement(
+								'label',
+								{ htmlFor: 'use-github' },
+								'\u6682\u4E0D\u652F\u6301React Commit'
+							)
+						)
 					),
 					_react2.default.createElement(
 						'ol',
@@ -22217,14 +22237,75 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	exports.setEnv = setEnv;
+
 	var _monitor = __webpack_require__(196);
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	var usedEnv = 'local';
+	var STORAGE_KEY = 'commits';
+	// var reactCommits = require('./commits');
+	// console.log(JSON.parse(reactCommits));
+
+	function setEnv(env) {
+		usedEnv = env;
+	}
+
 	function _random(max) {
 		return Math.round(Math.random() * max);
+	}
+
+	function queryDup(arr, fn) {
+		var map = arr.reduce(function (acc, val) {
+			if (!acc[fn(val)]) {
+				acc[fn(val)] = 1;
+			} else {
+				acc[fn(val)]++;
+			}
+			return acc;
+		}, {});
+
+		// console.log(Object.keys(map).length);
+	}
+
+	function fetchGithub(count) {
+		var commits = [];
+		var reactApi = 'https://api.github.com/repos/facebook/react/commits?';
+		var perPage = 100;
+		var allPage = count / perPage + 1;
+
+		if (count % perPage) {
+			allPage = allPage + 1;
+		}
+
+		function stringifyParams(params) {
+			return Object.keys(params).map(function (key) {
+				return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
+			}).join('&');
+		}
+
+		return function fetchBychunk(count) {
+			var params = {
+				page: allPage - count / perPage,
+				per_page: perPage
+			};
+
+			return fetch(reactApi + stringifyParams(params)).then(function (res) {
+				if (res.ok) {
+					return res.json();
+				}
+			}).then(function (data) {
+				commits = commits.concat(data);
+				if (count - perPage > 0) {
+					return fetchBychunk(count - perPage);
+				} else {
+					return commits;
+				}
+			});
+		}(count);
 	}
 
 	var Store = exports.Store = function () {
@@ -22233,11 +22314,21 @@
 
 			this.data = [];
 			this.id = 1;
+			// fetchGithub(200).then(function(commits) {
+			// 	queryDup(commits, function(val) {
+			// 		return val['sha']
+			// 	});
+			// 	localStorage.setItem(STORAGE_KEY, JSON.stringify(commits))
+			// });
 		}
 
 		_createClass(Store, [{
 			key: 'replace',
 			value: function replace() {
+				// if(usedEnv === 'github') {
+				// 	this.data = this.buildData().reverse();
+				// 	return;
+				// }
 				this.data = this.buildData();
 			}
 		}, {
@@ -22261,6 +22352,7 @@
 				this.data = this.data.filter(function (d) {
 					return !(d.id === id);
 				});
+				debugger;
 			}
 		}, {
 			key: 'clear',
@@ -22295,6 +22387,14 @@
 			key: 'buildData',
 			value: function buildData() {
 				var count = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1000;
+
+				// if (usedEnv === 'github') {
+				// 	if(!localStorage.getItem(STORAGE_KEY)) {
+				// 		alert('稍等, 正在为你获取数据');
+				// 		return;
+				// 	}
+				// 	return JSON.parse(localStorage.getItem(STORAGE_KEY))
+				// }
 
 				var data = [];
 				var adjectives = ['pretty', 'large', 'big', 'small', 'tall', 'short', 'long', 'handsome', 'plain', 'quaint', 'clean', 'elegant', 'easy', 'angry', 'crazy', 'helpful', 'mushy', 'odd', 'unsightly', 'adorable', 'important', 'inexpensive', 'cheap', 'expensive', 'fancy'];

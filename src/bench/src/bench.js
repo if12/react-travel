@@ -8,22 +8,15 @@ var fs = require('fs');
 
 var webdriver = require('selenium-webdriver');
 var chrome = require('selenium-webdriver/chrome');
-var path = require('chromedriver').path;
+// var path = require('chromedriver').path;
 var jStat = require('jStat').jStat;
 
-var bms = require('./bms').reverse();
+var bms = require('./bms')//.reverse();
 var util = require('./util');
 
 var logging = webdriver.logging;
 var Builder = webdriver.Builder;
 var forExec = util.forExec;
-
-// var service = new chrome.ServiceBuilder(path).build();
-// chrome.setDefaultService(service);
-// var driver = new webdriver
-// 	.Builder()
-// 	.withCapabilities(webdriver.Capabilities.chrome())
-// 	.build();
 
 var src = 'http://localhost:8888/github.repo/react-travel/src/bench/index.html?';
 var repeat = 5;
@@ -92,6 +85,10 @@ function readLogs(driver) {
 					}
 				} else if (name === 'Paint') {
 					if (click && msg.params.ts > click.end) {
+						console.log(click);
+						console.log(msg.params);
+						process.exit();
+
 						lastPaint = {
 							type: 'paint',
 							ts: +msg.params.ts,

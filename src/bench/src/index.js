@@ -7,7 +7,7 @@
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { Store } from './store'
+import { Store, setEnv } from './store'
 import { startMonitor, stopMonitor } from './monitor'
 
 // '' | key | scu(shouldComponentUpdate) | key, scu
@@ -68,6 +68,7 @@ class HelloReactPerf extends Component {
 		this.makeOp.bind(this)();
 
 		this.printDuration = this.printDuration.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	printDuration() {
@@ -101,6 +102,14 @@ class HelloReactPerf extends Component {
 		}
 	}
 
+	handleChange(e) {
+		if(e.target.checked) {
+			setEnv('github')
+		}else {
+			setEnv('local');
+		}
+	}
+
 	componentDidUpdate() {
 		this.printDuration();
 	}
@@ -121,6 +130,10 @@ class HelloReactPerf extends Component {
 							}
 						})
 					}
+					<span>
+						<input type="checkbox" id="use-github" onChange={ this.handleChange } />
+						<label htmlFor="use-github">暂不支持React Commit</label>
+					</span>
 				</p>
 
 				<ol>
